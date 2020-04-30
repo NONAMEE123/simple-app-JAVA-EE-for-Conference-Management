@@ -1,0 +1,11 @@
+SMAP
+valid_005fauteur_jsp.java
+JSP
+*S JSP
+*F
++ 0 valid_auteur.jsp
+valid_auteur.jsp
+*L
+5,33:49
+37,3:82
+*E

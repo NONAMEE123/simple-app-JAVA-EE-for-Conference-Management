@@ -1,0 +1,204 @@
+<%-- 
+    Document   : auter_int
+    Created on : 9 janv. 2019, 19:49:59
+    Author     : KHALID-RAMI
+--%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Auteur| Dashboard</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Conference</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="papier_auteur.jsp">papier</a></li>
+                        <li><a href="papier_par.jsp">submission</a></li>
+
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Welcome,</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+                    <%
+    if ((session.getAttribute("username") == null) || (session.getAttribute("username") == "")) {
+response.sendRedirect("login_auteur.jsp");
+%>
+You are not logged in<br/>
+<a href="login_auteur.jsp">Please Login</a>
+<%} else {
+%>
+Welcome <%=session.getAttribute("username")%>
+<br>
+<a href='logout_auteur.jsp'>Log out</a>
+<a href='edit_auteur.jsp'>Edit Account</a>
+
+<%
+    }
+%>
+     
+    <header id="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10">
+            <h1><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Dashboard <small> Particpant</small></h1>
+          </div>
+          <div class="col-md-2">
+            <div class="dropdown create">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <span class="ion-gear-b" aria-hidden="true">
+                             <span class="glyphicon glyphicon-user">
+                            </span> My Account
+                            <span class="caret"></span>
+              </button>
+               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a type="button" data-toggle="modal" data-target="#addPage">Logout</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="breadcrumb">
+      <div class="container">
+        
+      </div>
+    </section>
+
+    <section id="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="list-group">
+              
+              <a href="papier_auteur.jsp" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Papier <span class="badge"></span></a>
+               <a href="papier_par.jsp" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Submission <span class="badge"></span></a>
+              <a href="inscription_c.jsp" class="list-group-item"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>Registartion <span class="badge"></span></a>
+               <a href="edit_p_auteur.jsp" class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> change yuor profile <span class="badge"></span></a>
+
+                           
+            </div>
+
+           
+          </div>
+          <div class="col-md-9">
+            <!-- Website Overview -->
+            <div class="panel panel-default">
+              <div class="panel-heading main-color-bg">
+                <h3 class="panel-title">Dashboard Overview</h3>
+              </div>
+              <div class="panel-body">
+                <div class="col-md-3">
+                  <div class="well dash-box">
+                    <h2><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> 203</h2>
+                    <h4>Message</h4>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="well dash-box">
+                    <h2><span class="glyphicon glyphicon-education" aria-hidden="true"></span> 12</h2>
+                    <h4>Participants</h4>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="well dash-box">
+                    <h2><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 33</h2>
+                    <h4>Session</h4>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="well dash-box">
+                    <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> 12,334</h2>
+                    <h4>Visitors</h4>
+                  </div>
+                </div>
+              </div>
+              </div>
+
+              <!-- Latest Users -->
+                
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="footer">
+      <p>Copyright RAMI-SENBLI, &copy; 2019</p>
+    </footer>
+
+    <!-- Modals -->
+
+    <!-- Add Page -->
+    <div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Page</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Page Title</label>
+          <input type="text" class="form-control" placeholder="Page Title">
+        </div>
+        <div class="form-group">
+          <label>Page Body</label>
+          <textarea name="editor1" class="form-control" placeholder="Page Body"></textarea>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"> Published
+          </label>
+        </div>
+        <div class="form-group">
+          <label>Meta Tags</label>
+          <input type="text" class="form-control" placeholder="Add Some Tags...">
+        </div>
+        <div class="form-group">
+          <label>Meta Description</label>
+          <input type="text" class="form-control" placeholder="Add Meta Description...">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+  <script>
+     CKEDITOR.replace( 'editor1' );
+ </script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
